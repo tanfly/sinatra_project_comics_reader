@@ -22,6 +22,16 @@
 <%end%>
 </ul>
 <br>
+<form action="/comics/<%=@comic.id %>" method="post">
+<% if !@user.comics.include?(@comic) %> 
+<input type="checkbox" name="comic[ids][]" id="<%= @comic.id%>" value="<%=@comic.id%>"></input>
+<label> Check me to add this comic to your reading list!</label><br>
+<%end%>
+<input type="submit" value="Add">
+<br>
+</form>
+<br>
+ 
 
 <h3><a href="/comics/<%= @comic.id %>/edit">Click Here</a> to edit this comic's info</h3>
 <br>

@@ -60,6 +60,16 @@ class ComicsController < ApplicationController
     end
   end
 
+  post '/comics/:id' do 
+    if params[:comic]
+      @user = User.find(session[:user_id])
+      @comic = Comic.find(params[:comic][:ids])
+      @user.comics << @comic
+      flash[:message] = 'Successfully updated your list!'
+      redirect '/profile'
+    end
+  end
+
   get '/comics/:id/edit' do
     if logged_in?
     @comic = Comic.find(params[:id])

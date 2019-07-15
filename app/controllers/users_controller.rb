@@ -43,9 +43,11 @@ class UsersController < ApplicationController
     get '/logout' do 
         if logged_in?
             session.clear 
-            redirect '/login'
+            flash[:message] = "Successfully logged out."
+            redirect to('/login')
         else
-            redirect '/login'
+            flash[:error] = "You were not logged in!"
+            redirect to('/login')
         end
     end
 
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
         erb :'users/show'
         else 
             flash[:error] = "You have to login for that."
-            redirect '/login'
+            redirect to('/login')
         end
     end
 

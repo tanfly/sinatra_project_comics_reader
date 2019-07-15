@@ -18,12 +18,4 @@ class IllustratorsController < ApplicationController
       redirect '/'
     end
   end
-
-  delete '/illustrators/:id' do 
-    if logged_in?
-      @illustrator = Illustrator.find(params[:id])
-        @illustrator.delete
-    end
-    redirect '/illustrators'
-  end
 end
