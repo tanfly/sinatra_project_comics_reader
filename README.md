@@ -1,5 +1,5 @@
 # Iron Man Stan Comics Read Tracker
-Welcome to Iron Man Stan! This is a sinatra web application created to keep track of users Iron Man comics reading and Iron Man comic info.
+Welcome to Iron Man Stan! This is a sinatra web application created to keep track of users' Iron Man comics reading and Iron Man comic info.
 Users can make a list of all comics they want to read, remove comics as they've read them, add new comics, and view comics, authors and illustrators.
 
 ## Usage
