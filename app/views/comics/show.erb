@@ -1,0 +1,34 @@
+<% if flash.has?(:message) %>
+<div id="success" style="border: 2px solid green;">
+   <%= flash[:message] %>
+</div>
+<% end %>
+
+<h1><%= @comic.title %></h1>
+<h2>Released: <%= @comic.date %></h2>
+
+<h2>Author(s): </h2>
+<ul>
+<% @authors.each do |author| %>
+    <li><a href='/authors/<%=author.id%>'><%= author.name %></a></li>
+<%end%>
+</ul>
+<br>
+<br>
+<h2>Illustrator(s): </h2>
+<ul>
+<% @illustrators.each do |illustrator| %>
+    <li><a href='/illustrators/<%=illustrator.id%>'><%= illustrator.name %></a></li>
+<%end%>
+</ul>
+<br>
+
+<h3><a href="/comics/<%= @comic.id %>/edit">Click Here</a> to edit this comic's info</h3>
+<br>
+<br>
+<br>
+
+<form action="/comics/<%= @comic.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete this Comic">
+</form>

@@ -1,0 +1,46 @@
+<h1>Edit Comic Book: </h1>
+<form action='/comics/<%=@comic.id%>' method="POST">
+<input type="hidden" name="_method" value="PATCH">
+
+<h2>Comic Title: </h2>
+<input type="text" id="comic_title" name="comic[title]" value="<%= @comic.title%>"><br>
+<br>
+
+<h2>Release Date: ("Month" DD, YYYY) </h2> 
+<input type="text" name="comic[date]" id="comic_date" value="<%= @comic.date%>"><br>
+<br>
+
+<h2>Volume Num: </h2> 
+<input type="text" name="comic[volume]" id="comic_volume" value="<%= @comic.volume %>"><br>
+<br>
+
+<h2>Author(s): </h2>
+<% @authors.each do |author| %>
+   <input type="checkbox" name="comic[author_ids][]" id="<%= author.id%>" value="<%=author.id%>" <%='checked' if @comic.authors.include?(author) %>></input>
+   <label><%= author.name %></label><br>
+   <%end%>
+<br>
+<br>
+
+<h3>Add a New Author:</h3>
+<label>Author: </label>
+<input type="text" id="new_author" name="author[name]"><br>
+<br>
+<br>
+
+<h2>Illustrator(s): </h2>
+<% @illustrators.each do |illustrator| %>
+    <input type="checkbox" name="comic[illustrator_ids][]" id="<%= illustrator.id%>" value="<%=illustrator.id%>" <%='checked' if @comic.illustrators.include?(illustrator) %>></input>
+    <label><%= illustrator.name %></label><br>
+<%end%>
+<br>
+<br>
+
+<h3>Add a New Illustrator: </h3>
+<label>Illustrator: </label>
+<input type="text" id="new_illustrator" name="illustrator[name]"><br>
+<br>
+<br>
+
+<input type="submit" value="Edit Comic">
+</form>

@@ -1,0 +1,35 @@
+<% if flash.has?(:message) %>
+<div id="success" style="border: 4px solid green;">
+   <%= flash[:message] %>
+</div>
+<% elsif flash.has?(:error) %>
+<div id="error" style="border: 4px solid red;">
+<%= flash[:error] %>
+</div>
+<% end %>
+
+<h2> Iron Man Comics List:</h2>
+
+<h3>Check off the Comics you would like to add to your reading list:</h3>
+
+
+<form action='/comics' method='POST'>
+
+<%@comics.each do |comic|%>
+   <% if !@user.comics.include?(comic) %> 
+   <input type="checkbox" name="comic[ids][]" id="<%= comic.id%>" value="<%=comic.id%>"><a href='/comics/<%=comic.id%>'></input>
+   <label><%= comic.title %></label><br>
+   <%end%>
+<%end%><br>
+
+
+
+
+<input type="submit" value="Add Comics to Reading List"><br>
+<br>
+<a href='/comics/new'>Click Here</a> to create new comics for the list!
+<br>
+<br>
+<br>
+</form>
+

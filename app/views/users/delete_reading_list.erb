@@ -1,0 +1,11 @@
+<h2>Check off the Comics you'd like to remove from your Reading List: </h2>
+
+<form action="/delete_reading_list" method="post">
+<% @comics.each do |comic| %>
+    <input type="checkbox" name="comic[ids][]" id="<%= comic.id%>" value="<%=comic.id%>"></input>
+   <label><%= comic.title %></label><br>
+   <%end%>
+   <br>
+   <br>
+   <input type="submit" value="Delete">
+</form>

@@ -1,0 +1,7 @@
+<h1>Illustrators:</h1>
+<% @illustrators.each do |illustrator|%>
+  <li>
+    <a href="/illustrators/<%=illustrator.id%>"><%=illustrator.name%></a>
+  </li>
+<%end%>
+  

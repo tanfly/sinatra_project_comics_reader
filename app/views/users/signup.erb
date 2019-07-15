@@ -1,0 +1,19 @@
+<% if flash.has?(:error) %>
+<div id="error" style="border: 4px solid red;">
+<%= flash[:error] %>
+</div>
+<% end %>
+
+<h1>Create an Iron Man Stan Account!</h1>
+<form action="/signup" method="POST">
+<label for="username">Username:</label><br>
+<input type="text" name="username" id="username"><br>
+<br>
+<label for="email">Email:</label><br>
+<input type="text" name="email" id="email"><br>
+<br>
+<label for="password">Password:</label><br>
+<input type="text" name="password" id="password"><br>
+<br>
+<input type="submit" value="Create Account">
+</form>

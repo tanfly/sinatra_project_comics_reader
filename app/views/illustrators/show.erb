@@ -1,0 +1,13 @@
+<h1><%=@illustrator.name%></h1>
+
+ <h3>Comics:</h3>
+<% @illustrator.comics.each do |comic|%>
+ <a href="/comics/<%=comic.id%>"><%=comic.title%></a><br>
+<%end%>
+<br>
+<br>
+
+<form action="/illustrators/<%= @illustrator.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete this Illustrator">
+</form>

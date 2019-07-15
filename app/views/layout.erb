@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome Iron Man Stans!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="jumbotron text-center">
+<img src="https://i.ibb.co/jwCTh0C/4-B38-BD74-8-ECB-4-DA0-9867-303539-A9-F4-E9.png" class="img-thumbnail" alt="Iron Man Banner" border="0"></a><br />
+  <h1>Welcome Iron Man Stans!</h1>
+  <p>Your place to keep track of your Iron Man comics reading!</p> 
+</div>
+</body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Menu</h3>
+      <p><a href='/profile'>Profile</a></p>
+      <p><a href='/comics'>Comics</a></p>
+      <p><a href='/authors'>Authors</a></p>
+      <p><a href='/illustrators'>Illustrators</a></p>
+    </div>
+    <div class="col-sm-8">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<footer class="container">
+<p>
+<br>
+<br>
+<a href='/logout'>Logout</a>
+<br>
+<br>
+</p>
+</footer>
+
+</html>
