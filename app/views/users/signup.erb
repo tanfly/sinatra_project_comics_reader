@@ -6,14 +6,20 @@
 
 <h1>Create an Iron Man Stan Account!</h1>
 <form action="/signup" method="POST">
-<label for="username">Username:</label><br>
-<input type="text" name="username" id="username"><br>
-<br>
-<label for="email">Email:</label><br>
-<input type="text" name="email" id="email"><br>
-<br>
-<label for="password">Password:</label><br>
-<input type="text" name="password" id="password"><br>
-<br>
+<div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="username" type="text" class="form-control" name="username" placeholder="Username">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="email" class="form-control" name="email" placeholder="Email">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+  <br>
 <input type="submit" value="Create Account">
 </form>
+
+<h3>or, <a href='/login'>Click Here</a> to Login</h3>

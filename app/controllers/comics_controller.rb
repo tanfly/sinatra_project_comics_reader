@@ -1,6 +1,4 @@
-require 'rack-flash'
 class ComicsController < ApplicationController
-  use Rack::Flash
 
   get '/comics' do
     if logged_in?
@@ -8,7 +6,8 @@ class ComicsController < ApplicationController
     @user = current_user
     erb :'/comics/index'
     else
-      redirect '/'
+      flash[:error] = "You have to login for that."
+      redirect '/login'
     end
   end
 
@@ -17,6 +16,7 @@ class ComicsController < ApplicationController
       @user = User.find(session[:user_id])
       @comic = Comic.find(params[:comic][:ids])
       @user.comics << @comic
+      flash[:message] = 'Successfully updated your list!'
       redirect '/profile'
     else 
       flash[:error] = 'Please select at least one comic to add to your list.'

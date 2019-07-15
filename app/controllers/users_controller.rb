@@ -1,6 +1,4 @@
-require 'rack-flash'
 class UsersController < ApplicationController
-    use Rack::Flash
 
     get '/signup' do 
         if logged_in?
@@ -11,14 +9,14 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
-        if !params[:username].empty? && !params[:email].empty? && !params[:password].empty
+        if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
             @user = User.create(params)
             @user.save
             session[:user_id] = @user.id  
             redirect '/profile'
         else 
             flash[:error] = 'Please ensure all areas are filled out.'
-            redirect '/signup'
+            redirect to('/signup')
         end
     end
 
@@ -37,6 +35,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id 
             redirect '/profile'
         else
+            flash[:error] = "I'm sorry, that didn't work. Please try again or create a new account"
             redirect '/signup'
         end
     end
@@ -51,9 +50,14 @@ class UsersController < ApplicationController
     end
 
     get '/profile' do 
+        if logged_in?
         @user = User.find(session[:user_id])
         @comics = @user.comics.uniq.sort
         erb :'users/show'
+        else 
+            flash[:error] = "You have to login for that."
+            redirect '/login'
+        end
     end
 
     get '/delete_reading_list' do 
@@ -67,6 +71,7 @@ class UsersController < ApplicationController
             @user = User.find(session[:user_id])
             @comic = Comic.find(params[:comic][:ids])
             @user.comics.delete(@comic)
+            flash[:message] = "Successfully updated your reading list!"
             redirect '/profile'
         end
     end

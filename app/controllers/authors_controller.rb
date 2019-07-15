@@ -5,7 +5,8 @@ class AuthorsController < ApplicationController
       @authors = Author.all.sort
       erb :'/authors/index'
       else 
-        redirect '/'
+        flash[:error] = "You have to login for that."
+        redirect '/login'
       end
     end
   
