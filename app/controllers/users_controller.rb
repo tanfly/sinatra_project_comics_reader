@@ -35,30 +35,30 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id 
             redirect '/profile'
         else
-            flash[:error] = "I'm sorry, that didn't work. Please try again or create a new account"
-            redirect '/signup'
+            flash[:error] = 'Login Failed. Please try again or create a new account'
+            redirect '/login'
         end
     end
 
     get '/logout' do 
         if logged_in?
             session.clear 
-            flash[:message] = "Successfully logged out."
+            flash[:message] = 'Successfully logged out.'
             redirect to('/login')
         else
-            flash[:error] = "You were not logged in!"
+            flash[:error] = 'You were not logged in!'
             redirect to('/login')
         end
     end
 
     get '/profile' do 
         if logged_in?
-        @user = User.find(session[:user_id])
-        @comics = @user.comics.uniq.sort
-        erb :'users/show'
+            @user = User.find(session[:user_id])
+            @comics = @user.comics.uniq.sort
+            erb :'users/show'
         else 
             flash[:error] = "You have to login for that."
-            redirect to('/login')
+            redirect to('/login') 
         end
     end
 

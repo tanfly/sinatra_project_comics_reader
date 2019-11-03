@@ -11,13 +11,21 @@ class ComicsController < ApplicationController
     end
   end
 
+  get '/comics_users' do 
+      comics = Comic.all 
+      @comic = comics.sort {|comic1, comic2| comic1.users.count <=> comic2.users.count}.first
+
+      erb :'/comics/comics_users'
+  end
+      
+
   post '/comics' do
     if params[:comic]
       @user = User.find(session[:user_id])
       @comic = Comic.find(params[:comic][:ids])
       @user.comics << @comic
       flash[:message] = 'Successfully updated your list!'
-      redirect '/profile'
+      redirect '/profile' 
     else 
       flash[:error] = 'Please select at least one comic to add to your list.'
       redirect '/comics'
