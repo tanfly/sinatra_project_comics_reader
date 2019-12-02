@@ -3,8 +3,12 @@ Bundler.require
 
 require_all 'app'
 
+configure :development do 
+  set :database, "sqlite3:///database.db"
+end
+
 configure :production do
-  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+  db = URI.parse(ENV['HEROKU_POSTGRESQL_MAROON'] || 'postgres://localhost/mydb')
 
   ActiveRecord::Base.establish_connection(
     :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
